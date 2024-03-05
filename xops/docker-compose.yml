@@ -1,0 +1,18 @@
+version: 'version 1.0.0'
+
+services:
+  fastapi:
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+  db:
+    image: "postgres:13"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "secret"
+      POSTGRES_DB: "xops"
+    ports:
+      - "5432:5432"
